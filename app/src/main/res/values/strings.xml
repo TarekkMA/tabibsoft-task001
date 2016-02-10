@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Task001</string>
+    <string name="drawer_open">Menu opened</string>
+    <string name="drawer_close">Menu closed</string>
 </resources>

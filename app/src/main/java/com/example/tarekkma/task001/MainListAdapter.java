@@ -10,8 +10,6 @@ import android.widget.TextView;
 import com.example.tarekkma.task001.modles.Section;
 import com.squareup.picasso.Picasso;
 
-import junit.framework.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +32,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MyVH> 
 
     @Override
     public MyVH onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_item_layout, parent, false);
         return new MyVH(v);
     }
 

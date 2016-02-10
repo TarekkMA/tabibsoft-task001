@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:focusable="true"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground">
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="125dp"
         android:layout_height="125dp"
