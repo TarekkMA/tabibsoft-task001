@@ -1,5 +1,11 @@
 package com.example.tarekkma.task001;
 
+import android.graphics.Color;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,13 +26,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     RecyclerView list;
     RecyclerView drawer;
-    RequestQueue queue ;
+    RequestQueue queue;
     MainListAdapter adapter;
     Toolbar toolbar;
-    final String API_URL="http://mobileapp.ezzmedicalcare.com/providers/departments";
+    TabLayout tabLayout;
+    ViewPager viewPager;
 
     String TITLES[] = {"Home","Events","Mail","Shop","Travel"};
     int ICONS[] = {R.drawable.home_48,R.drawable.planner_48,
@@ -43,15 +53,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_side_drawer);
         queue= Volley.newRequestQueue(this);
 
+        setupAppBar();
         setupDrawer();
 
-        list = (RecyclerView)findViewById(R.id.list);
-        list.setLayoutManager(new GridLayoutManager(this,2));
-        adapter = new MainListAdapter(getApplicationContext());
-        list.setAdapter(adapter);
-        getDataFromServer();
     }
 
+    void setupAppBar(){
+        //Tool Bar
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        //Tabs
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setTabTextColors(getResources().getColor(R.color.primary_text), getResources().getColor(R.color.secondary_text));
+        tabLayout.setSelectedTabIndicatorHeight(6);
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.primary_light));
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new SectionsFragment(queue), "Home");
+        adapter.addFragment(new SectionsFragment(queue), "Sittings");
+        adapter.addFragment(new SectionsFragment(queue), "Contact us");
+        viewPager.setAdapter(adapter);
+    }
 
     void setupDrawer(){
         drawer = (RecyclerView) findViewById(R.id.drawer_recyclerView); // Assigning the RecyclerView Object to the xml View
@@ -60,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
         drawerAdapter = new DrawerAdapter(TITLES,ICONS,"Tarek Mohamed Abdalla","tarekkma@gmail.com",R.drawable.download);       // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
         drawer.setAdapter(drawerAdapter);
         Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, Drawer,
                 toolbar, //nav menu toggle icon
@@ -69,13 +95,11 @@ public class MainActivity extends AppCompatActivity {
                 R.string.app_name // nav drawer close - description for accessibility
         ){
             public void onDrawerClosed(View view) {
-                getSupportActionBar().setTitle("My Title");
                 // calling onPrepareOptionsMenu() to show action bar icons
                 invalidateOptionsMenu();
             }
 
             public void onDrawerOpened(View drawerView) {
-                getSupportActionBar().setTitle("Drawer title");
                 // calling onPrepareOptionsMenu() to hide action bar icons
                 invalidateOptionsMenu();
             }
@@ -89,25 +113,34 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    void getDataFromServer(){
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, API_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d("API", response);
-                        adapter.update(Parser.parseSections(response));
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext()
-                        , "هناك مشكلة في الإتصال بالسرفر" + "\n" + error.getMessage(),
-                        Toast.LENGTH_LONG).show();
-                error.printStackTrace();
-            }
-        });
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest);
+
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
 }
