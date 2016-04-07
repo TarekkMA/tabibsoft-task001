@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/complaint.parent"
+    tools:context="com.TMAProject.EzzSteel.Activities.ComplaintActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            style="@style/_2nd_title_txt"
+            android:text="@string/complaint_2nd_title_text"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:padding="8dp"
+            android:background="@drawable/complaint_text_bg"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:id="@+id/imageView"
+                android:src="@drawable/person_ico"
+                android:layout_gravity="center"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/complaint.name"
+                android:background="@null"
+                android:layout_marginLeft="12dp"
+                android:hint="Your Name ..."
+                android:inputType="textPersonName"
+                android:maxLines="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:padding="8dp"
+            android:background="@drawable/complaint_text_bg"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:id="@+id/imageView2"
+                android:src="@drawable/phone_ico"
+                android:layout_gravity="center" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/complaint.number"
+                android:background="@null"
+                android:numeric="integer"
+                android:layout_marginLeft="12dp"
+                android:hint="Your Mobile Number ..."
+                android:maxLines="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@drawable/complaint_big_text_bg"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:id="@+id/imageView3"
+                android:src="@drawable/pen_ico" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/complaint.msg"
+                android:background="@null"
+                android:layout_marginLeft="12dp"
+                android:hint="Your Comments ..."
+                android:gravity="start"
+                android:minHeight="150dp"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+
+        <Button
+
+            android:text="Send Message"
+            android:id="@+id/complaint.btn"
+            android:background="@drawable/btn_orange"
+            style="@style/ezz_button"/>
+
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,16 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_height="match_parent"
+android:layout_width="match_parent" >
+
+    <CheckedTextView
+        android:id="@+id/spinnerText"
+        style="?android:attr/spinnerDropDownItemStyle"
+        android:singleLine="true"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:textColor="#7b7b7b"
+        android:background="@null"
+        android:text="Temp"
+        />
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تطبيق عز الطبي</string>
+    <string name="drawer_close"></string>
+    <string name="complaint_activity_title">الشكاوي</string>
+    <string name="err_empty_title">لا توجد بيانات</string>
+    <string name="err_empty_msg">نحن نأسف لهذا \n- يمكنك إعادة المحاولة في وقت لاحق</string>
+    <string name="err_id_depart_msg">لا يوجد مرجع علي الأختيار الذي قمت بة</string>
+    <string name="err_id_depart_title">حدث شيئ غير متوقع</string>
+    <string name="err_genaric_title">حدث خطأ ما</string>
+    <string name="general_search_2nd_title_text">أبحث عما تريد</string>
+    <string name="title_activity_genral_search">البحث العام</string>
+    <string name="searchbox_hint">إبحث في الفروع بالإسم ...</string>
+    <string name="mapbtn">أظهر علي الخريطة</string>
+    <string name="pdfbtn">إفتح ملف الـPDF</string>
+</resources>

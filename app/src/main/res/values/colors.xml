@@ -3,13 +3,22 @@
     <color name="colorPrimary">@color/primary</color>
     <color name="colorPrimaryDark">@color/primary_dark</color>
     <color name="colorAccent">@color/accent</color>
+    <color name="general_search_2nd_title_color">@color/White</color>
+    <color name="general_search_2nd_title_bg">@color/SlateGray4</color>
+    <color name="nav_item_border">#aa5e06</color>
+    <color name="nav_item_bgr">#ff9e00</color>
+    <color name="toolbar_color">#F14B00</color>
 
-    <color name="primary">#FFC107</color>
-    <color name="primary_dark">#FFA000</color>
-    <color name="primary_light">#FFECB3</color>
-    <color name="accent">#FF9800</color>
+    <color name="primary">#FD8B0F</color>
+    <color name="primary_dark">#de7a0e</color>
+    <color name="primary_light">#ff9c31</color>
+    <color name="accent">#F14B00</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
     <color name="icons">#212121</color>
     <color name="divider">#B6B6B6</color>
+    <color name="White">#fff</color>
+    <color name="SlateGray4">#6C7B8B</color>
+
+    
 </resources>

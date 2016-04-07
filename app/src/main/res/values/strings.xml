@@ -1,5 +1,21 @@
 <resources>
-    <string name="app_name">Task001</string>
-    <string name="drawer_open">Menu opened</string>
-    <string name="drawer_close">Menu closed</string>
+    <string name="app_name">Ezz Medical Application</string>
+    <string name="drawer_open" translatable="false">Menu opened</string>
+    <string name="drawer_close" translatable="false">Menu closed</string>
+    <string name="title_activity_genral_search">General Search</string>
+    <string name="general_search_2nd_title_text">Find what you want</string>
+    <string name="complaint_2nd_title_text">Any Suggestions or complaints ?</string>
+    <string name="complaint_activity_title">Complaints</string>
+
+    <string name="err_id_depart_title">Something strange happened</string>
+    <string name="err_id_depart_msg">No reference on the department you chose</string>
+
+    <string name="err_empty_title">No data found</string>
+    <string name="err_empty_msg">We are sorry for that
+- you can try again later</string>
+    <string name="err_genaric_title">Something went wrong</string>
+    <string name="searchbox_hint">Search branches by name ...</string>
+    <string name="mapbtn">Show in map</string>
+    <string name="pdfbtn">Open PDF File</string>
+
 </resources>

@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tarekkma.task001">
+    package="com.TMAProject.EzzSteel">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activities.GenralSearchActivity"
+            android:label="@string/title_activity_genral_search"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.ComplaintActivity"
+            android:label="@string/complaint_activity_title"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.SubDerpartmentActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.ProviderActivity" />
+        <activity android:name=".Activities.InfoPdfActivity" />
+        <activity android:name=".Activities.BranchActivity" />
+        <activity android:name=".Activities.BranchDetailsActivity"></activity>
     </application>
 
 </manifest>

@@ -15,4 +15,69 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="BoldFont">
+        <item name="fontPath">fonts/HelveticaNeueLTArabic-Bold.ttf</item>
+    </style>
+
+    <style name="TextAppearance.BoldFont" parent="android:TextAppearance">
+        <item name="fontPath">fonts/HelveticaNeueLTArabic-Bold.ttf</item>
+        <item name="android:color">@color/toolbar_color</item>
+    </style>
+
+    <style name="general_search_spinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?android:attr/listPreferredItemHeight</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:background">@drawable/general_search_spinner_bg</item>
+    </style>
+    <style name="_2nd_title_txt">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:background">@color/SlateGray4</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="fontPath">fonts/HelveticaNeueLTArabic-Bold.ttf</item>
+    </style>
+    <style name="search_bar_bg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:background">@color/SlateGray4</item>
+    </style>
+    <style name="search_bar_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:background">@drawable/search_bg</item>
+        <item name="android:hint">Search Branches by name ...</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:drawableStart">@drawable/search_24</item>
+    </style>
+    <style name="ezz_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">17sp</item>
+        <item name="background">@drawable/btn_orange</item>
+        <item name="android:textColor">@color/White</item>
+    </style>
+
 </resources>

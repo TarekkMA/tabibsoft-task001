@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.TMAProject.EzzSteel.Activities.GenralSearchActivity">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+       <TextView
+           style="@style/_2nd_title_txt"
+           android:text="@string/general_search_2nd_title_text"
+           />
+
+       <LinearLayout
+           style="@style/general_search_spinner">
+           <android.support.v7.widget.AppCompatSpinner
+               android:id="@+id/spinner_gov"
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:background="@null"
+               android:layout_weight="1"/>
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:src="@drawable/spinner_arrow"/>
+       </LinearLayout>
+
+       <LinearLayout
+           style="@style/general_search_spinner">
+           <android.support.v7.widget.AppCompatSpinner
+               android:id="@+id/spinner_city"
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:dropDownWidth="match_parent"
+               android:background="@null"
+               android:layout_weight="1"/>
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:src="@drawable/spinner_arrow"/>
+       </LinearLayout>
+       <LinearLayout
+           style="@style/general_search_spinner">
+           <android.support.v7.widget.AppCompatSpinner
+               android:id="@+id/spinner_department"
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:dropDownWidth="match_parent"
+               android:background="@null"
+               android:layout_weight="1"/>
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:src="@drawable/spinner_arrow"/>
+       </LinearLayout>
+
+       <LinearLayout
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+           <Button
+               android:background="@drawable/btn_orange"
+               android:text="Reset"
+               android:id="@+id/btn_reset"
+               style="@style/ezz_button"
+               android:layout_width="0dp"
+               android:layout_weight="1" />
+
+           <Button
+
+               android:text="Search"
+               android:background="@drawable/btn_orange"
+               android:id="@+id/btn_search"
+               style="@style/ezz_button"
+               android:layout_width="0dp"
+               android:layout_weight="1" />
+       </LinearLayout>
+   </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

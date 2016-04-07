@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fontPath="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.TMAProject.EzzSteel.Activities.BranchDetailsActivity">
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scaleType="centerCrop"
+    android:minHeight="200dp"
+    android:maxHeight="250dp"
+    android:id="@+id/branch.img" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:paddingBottom="1dp">
+
+            <FrameLayout
+                android:layout_width="70dp"
+                android:layout_height="65dp"
+                android:background="#9a9792"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/branch.icon"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="1dp"
+                android:background="#bab5b1"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/branch.name"
+                    android:layout_gravity="center"
+                    android:textColor="#fff" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ebe9e6"
+            android:paddingBottom="1dp">
+
+            <FrameLayout
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:padding="8dp"
+                android:minHeight="40dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView5"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icn_address" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="1dp"
+                android:background="#fff"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/branch.address"
+                    android:layout_gravity="center"
+                    android:padding="4dp"
+                    android:textColor="#000" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ebe9e6"
+            android:paddingBottom="1dp">
+
+            <FrameLayout
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:padding="8dp"
+                android:minHeight="40dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView6"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icn_message" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="1dp"
+                android:background="#fff"
+                android:padding="8dp" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/branch.email"
+                    android:layout_gravity="center"
+                    android:padding="4dp"
+                    android:textColor="#000" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ebe9e6"
+            android:paddingBottom="1dp">
+
+            <FrameLayout
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:padding="8dp"
+                android:minHeight="40dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView7"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icn_phone" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="1dp"
+                android:background="#fff"
+                android:padding="8dp" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/branch.numbers"
+                    android:layout_gravity="center"
+                    style="@style/BoldFont"
+                    android:autoLink="phone"
+                    android:textColor="#000"
+                    android:padding="4dp" />
+            </FrameLayout>
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView4"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/map" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ca000000">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show In Map"
+                android:id="@+id/branch.map.btn"
+                android:layout_gravity="center"
+                android:paddingLeft="64dp"
+                android:paddingRight="64dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:textColor="#fff"
+                android:background="@drawable/btn_orange" />
+        </FrameLayout>
+    </FrameLayout>
+
+</LinearLayout>
