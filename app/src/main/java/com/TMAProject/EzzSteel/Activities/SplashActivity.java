@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.TMAProject.EzzSteel.R;
-import com.android.volley.toolbox.ImageLoader;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 

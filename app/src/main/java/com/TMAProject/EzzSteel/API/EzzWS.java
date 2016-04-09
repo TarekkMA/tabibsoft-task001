@@ -6,6 +6,7 @@ import com.TMAProject.EzzSteel.API.POJO.GET.ComplaintResult;
 import com.TMAProject.EzzSteel.API.POJO.GET.Department;
 import com.TMAProject.EzzSteel.API.POJO.GET.Governate;
 import com.TMAProject.EzzSteel.API.POJO.GET.InfoPdf;
+import com.TMAProject.EzzSteel.API.POJO.GET.Notification;
 import com.TMAProject.EzzSteel.API.POJO.GET.PojoArrayWarper;
 import com.TMAProject.EzzSteel.API.POJO.GET.Provider;
 import com.TMAProject.EzzSteel.API.POJO.POST.AreaPOST;
@@ -51,6 +52,9 @@ public interface EzzWS {
     Call<List<Branche>> getGenralSearch(@Body List<GeneralSearchPOST> sentData);
     @POST("providers/branchedetail")
     Call<List<Branche>> getBranchDetailes(@Body List<BranchDetailesPOST> sentData);
+    @GET("providers/notifications")
+    Call<List<Notification>> getNotifcations();
+
 
 
 }

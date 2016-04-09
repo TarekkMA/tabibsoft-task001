@@ -17,5 +17,36 @@
     <string name="searchbox_hint">Search branches by name ...</string>
     <string name="mapbtn">Show in map</string>
     <string name="pdfbtn">Open PDF File</string>
+    <string name="search_option">Search</string>
+    <string name="home_option">Home</string>
+    <string name="complaints_option">Complaint</string>
+    <string name="settings_option">Settings</string>
+    <string name="notifcation_option">Notifcations</string>
+    <string name="complaint_name_hint">Your Name ...</string>
+    <string name="complaint_mobile_hint">Your Mobile Number ...</string>
+    <string name="complaint_msg_hint">Your Comments ...</string>
+    <string name="complaint_send_btn">Send Message</string>
+    <string name="cancel_search">CANCEL</string>
+    <string name="searching">Searching for</string>
+    <string name="search_cannot">Can\'t search for</string>
+    <string name="search_404">Nothing matches</string>
+    <string name="complaint_nameerr">Your name shouldn\'t be empty</string>
+    <string name="complaint_phoneerr">Your phone shouldn\'t be empty</string>
+    <string name="complaint_msgerr">Your complaint shouldn\'t be empty</string>
+    <string name="complaint_err">Your complaint didn\'t go to server :(</string>
+    <string name="complaint_succ">Your complaint have been added successfully :)</string>
+    <string name="spinner_gov">Choose Governorate</string>
+    <string name="spinner_area">Choose Area</string>
+    <string name="spinner_dep">Choose Department</string>
+    <string name="search_btn">Search</string>
+    <string name="reset_btn">Reset</string>
+    <string name="save_btn">Save</string>
+    <string name="arabic_option">Arabic</string>
+    <string name="english_option">English</string>
+    <string name="lang_change_title">تم تغير اللغة إلي العربية</string>
+    <string name="lang_change_msg">برجاء إعادة فتح البرنامج لإتخاذ الإجراء</string>
+    <string name="lang_ok">ok</string>
+    <string name="tarekkma">Programmed By Tarek Mohamed Abdalla</string>
+    <string name="loading">Loading ...</string>
 
 </resources>

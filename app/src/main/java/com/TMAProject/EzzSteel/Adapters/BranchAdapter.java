@@ -60,11 +60,10 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.VH> {
     @Override
     public void onBindViewHolder(VH holder, int position) {
         final Branche b = branchList.get(position);
-        if(b.getImg()!=null || !b.getImg().equalsIgnoreCase(""))
+        if(b.getImg()!=null && !b.getImg().equalsIgnoreCase(""))
             Picasso.with(context).load(b.getFullImgUrl()).fit().into(holder.imageView);
-        else if(iconResId>1)
+        else
             Picasso.with(context).load(iconResId).into(holder.imageView);
-        else Picasso.with(context).load(R.drawable.def_hos_gray_old).into(holder.imageView);
 
         holder.textView.setText(getName(b));
         holder.itemView.setOnClickListener(new View.OnClickListener() {

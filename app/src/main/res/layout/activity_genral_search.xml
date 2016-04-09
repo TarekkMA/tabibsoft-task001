@@ -65,7 +65,7 @@
 
            <Button
                android:background="@drawable/btn_orange"
-               android:text="Reset"
+               android:text="@string/reset_btn"
                android:id="@+id/btn_reset"
                style="@style/ezz_button"
                android:layout_width="0dp"
@@ -73,7 +73,7 @@
 
            <Button
 
-               android:text="Search"
+               android:text="@string/search_btn"
                android:background="@drawable/btn_orange"
                android:id="@+id/btn_search"
                style="@style/ezz_button"

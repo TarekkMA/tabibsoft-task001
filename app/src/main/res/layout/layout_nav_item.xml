@@ -24,7 +24,7 @@
         android:id="@+id/rowIcon"
         android:paddingStart="4dp"
         android:paddingEnd="18dp"
-        android:src="@drawable/nav_ico"/>
+        android:src="@drawable/navigation_icon"/>
 
     <TextView
         android:layout_width="0dp"
@@ -32,7 +32,7 @@
         android:layout_weight="1"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Medium Text"
+        android:text="@string/loading"
         android:id="@+id/rowText"
         style="@style/BoldFont"
         android:textSize="15sp"

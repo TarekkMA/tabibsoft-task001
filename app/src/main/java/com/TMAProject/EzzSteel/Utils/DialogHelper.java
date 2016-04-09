@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 
+import com.TMAProject.EzzSteel.R;
+
 /**
  * Created by TarekkMA on 4/2/16.
  */
@@ -34,6 +36,12 @@ public class DialogHelper {
         new AlertDialog.Builder(context)
                 .setTitle(title)
                 .setMessage(msg)
+                .setPositiveButton(R.string.lang_ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
                 .setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
@@ -43,7 +51,7 @@ public class DialogHelper {
                 .setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
-                        if(exit) ((Activity) context).finish();
+                        if (exit) ((Activity) context).finish();
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)

@@ -1,7 +1,6 @@
 package com.TMAProject.EzzSteel.Activities.Base;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -24,6 +23,7 @@ import com.TMAProject.EzzSteel.Activities.Base.Parameters.NavInfo;
 import com.TMAProject.EzzSteel.Activities.Base.Parameters.TitleInfo;
 import com.TMAProject.EzzSteel.Adapters.SideDrawerAdapter;
 import com.TMAProject.EzzSteel.R;
+import com.TMAProject.EzzSteel.Utils.LangHelper;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -45,6 +45,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     View loadingView = null;
 
+    static boolean firstActivityOppened=true;
+
     SideDrawerAdapter navAdapter;
 
     private boolean navExists;
@@ -55,8 +57,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if(lang==null)
-            changeLanguage();
+        adjustLanguage();
 
         parameters = getParameters();
         super.onCreate(savedInstanceState);
@@ -81,6 +82,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+
     }
 
     @Override
@@ -105,13 +107,16 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    private void changeLanguage(){
-        lang = "ar";
-        Resources res = getBaseContext().getResources();
+    private void adjustLanguage(){
+        if (firstActivityOppened){
+            lang = LangHelper.getLangage(this);
+            firstActivityOppened=false;
+        }
+        Resources res = getResources();
         // Change locale settings in the app.
         DisplayMetrics dm = res.getDisplayMetrics();
         android.content.res.Configuration conf = res.getConfiguration();
-        conf.locale = new Locale("ar");
+        conf.locale = new Locale(lang);
         res.updateConfiguration(conf, dm);
         conf.setLayoutDirection(conf.locale);
     }

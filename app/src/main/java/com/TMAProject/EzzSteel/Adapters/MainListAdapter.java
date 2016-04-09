@@ -1,6 +1,7 @@
 package com.TMAProject.EzzSteel.Adapters;
 
 import android.content.Context;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.TMAProject.EzzSteel.API.POJO.GET.Department;
 import com.TMAProject.EzzSteel.R;
 import com.TMAProject.EzzSteel.Utils.Navigation;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -41,10 +43,20 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MyVH> 
     }
 
     @Override
-    public void onBindViewHolder(MyVH holder, final int position) {
+    public void onBindViewHolder(final MyVH holder, final int position) {
         Department department = list.get(position);
         holder.nameText.setText(getName(department));
-        Picasso.with(context).load(department.getFullImgUrl()).noFade().into(holder.imageView);
+        Picasso.with(context).load(department.getFullImgUrl()).noFade().into(holder.imageView, new Callback() {
+            @Override
+            public void onSuccess() {
+                holder.loadingProgressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,10 +78,12 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MyVH> 
     class MyVH extends RecyclerView.ViewHolder {
         TextView nameText;
         CircleImageView imageView;
+        ContentLoadingProgressBar loadingProgressBar;
         public MyVH(View itemView) {
             super(itemView);
             nameText=(TextView) itemView.findViewById(R.id.itemNameText);
             imageView=(CircleImageView)itemView.findViewById(R.id.itemImage);
+            loadingProgressBar=(ContentLoadingProgressBar)itemView.findViewById(R.id.department_image_loading);
         }
 
 

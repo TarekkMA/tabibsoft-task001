@@ -36,6 +36,7 @@ public class SubDerpartmentActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        toggleLoading();
         list = (RecyclerView)findViewById(R.id.list);
         list.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new MainListAdapter(getApplicationContext());
@@ -53,12 +54,13 @@ public class SubDerpartmentActivity extends BaseActivity {
         Genrator.createService(EzzWS.class).getSubDepartments(Arrays.getSubDepartmentSearchPOST(id)).enqueue(new Callback<List<Department>>() {
             @Override
             public void onResponse(Call<List<Department>> call, retrofit2.Response<List<Department>> response) {
+                toggleLoading();
                 if (!response.isSuccess()) {
-                    //err
+                    DialogHelper.errorHappendDialog(context, true, getString(R.string.err_genaric_title), "response : " + response.code());
                     return;
                 }
                 if(response.body().isEmpty()){
-                    DialogHelper.infoHappendDialog(context,true,"No data found","We are sorry for that \n- you can try again later");
+                    DialogHelper.errorHappendDialog(context, true, getString(R.string.err_empty_title), getString(R.string.err_empty_msg));
                     return;
                 }
                 adapter.update(response.body());
@@ -66,7 +68,9 @@ public class SubDerpartmentActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Department>> call, Throwable t) {
-            }
+                toggleLoading();
+                DialogHelper.errorHappendDialog(context, true, getString(R.string.err_genaric_title), t.getMessage());
+                t.printStackTrace();            }
         });
     }
 

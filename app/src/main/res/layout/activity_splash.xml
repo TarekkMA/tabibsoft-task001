@@ -10,4 +10,20 @@
         android:id="@+id/splash_img"
         android:src="@null"
         android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/tarekkma"
+        android:id="@+id/textView2"
+        android:textSize="10sp"
+        android:shadowColor="#a0000000"
+        android:shadowRadius="1"
+        android:typeface="monospace"
+        android:textStyle="bold"
+        android:textColor="#8cffffff"
+        android:layout_alignParentBottom="true"
+        android:textIsSelectable="false"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

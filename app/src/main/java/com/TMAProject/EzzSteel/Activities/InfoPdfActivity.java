@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,14 +23,13 @@ import com.TMAProject.EzzSteel.Activities.Base.Parameters.BackButtonInfo;
 import com.TMAProject.EzzSteel.Activities.Base.Parameters.TitleInfo;
 import com.TMAProject.EzzSteel.R;
 import com.TMAProject.EzzSteel.Utils.DialogHelper;
-import com.android.volley.toolbox.StringRequest;
 
 import java.util.Hashtable;
 import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
+import retrofit2.Response;import static com.TMAProject.EzzSteel.Utils.LangHelper.*;
 
 public class InfoPdfActivity extends BaseActivity {
 
@@ -77,8 +77,9 @@ public class InfoPdfActivity extends BaseActivity {
                         }
                     });
                 }
-                content.setText(Html.fromHtml(pdf.getContent_en()));
-                title.setText(pdf.getName_english());
+                content.setText(Html.fromHtml(getContent(pdf)));
+                Linkify.addLinks(content,Linkify.PHONE_NUMBERS);
+                title.setText(getName(pdf));
             }
 
             @Override

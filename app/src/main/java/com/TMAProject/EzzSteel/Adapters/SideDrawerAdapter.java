@@ -10,10 +10,11 @@ import android.widget.TextView;
 
 import com.TMAProject.EzzSteel.API.POJO.GET.Department;
 import com.TMAProject.EzzSteel.R;
+import com.TMAProject.EzzSteel.Utils.LangHelper;
 import com.TMAProject.EzzSteel.Utils.Navigation;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;import static com.TMAProject.EzzSteel.Utils.LangHelper.*;
 
 /**
  * Created by tarekkma on 2/10/16.
@@ -25,8 +26,11 @@ public class SideDrawerAdapter extends RecyclerView.Adapter<SideDrawerAdapter.My
 
     private String DEPARTMENT_KEY;
 
-    public static final String COMPLAINT_OPTION = "Complaint";
-    public static final String SEARCH_OPTION = "Search";
+    public static String COMPLAINT_OPTION = "Complaint";
+    public static String SEARCH_OPTION="Search" ;
+    public static String HOME_OPTION="Home" ;
+    public static String SETTING_OPTION = "Setting";
+    public static String NOTIFICATION_OPTION = "Notification";
 
 
     private List<String> list = new ArrayList<>();
@@ -37,11 +41,12 @@ public class SideDrawerAdapter extends RecyclerView.Adapter<SideDrawerAdapter.My
     Context context;
 
     public SideDrawerAdapter(Context context) {
-        items.add("Home");
+        LangHelper.renameNavOptions(context);
+        items.add(HOME_OPTION);
         items.add(SEARCH_OPTION);
         items.add(COMPLAINT_OPTION);
-        items.add("Setting");
-        items.add("Notification");
+        items.add(SETTING_OPTION);
+        items.add(NOTIFICATION_OPTION);
         items.add(inserstIndex, loadingText);
         this.context=context;
     }
@@ -72,7 +77,7 @@ public class SideDrawerAdapter extends RecyclerView.Adapter<SideDrawerAdapter.My
                 });
             } else if (items.get(cPos) instanceof Department) {
                 Department d = ((Department) items.get(cPos));
-                holder.textView.setText(d.getName_english());
+                holder.textView.setText(getName(d));
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

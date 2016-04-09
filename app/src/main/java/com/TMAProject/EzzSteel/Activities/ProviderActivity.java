@@ -131,8 +131,8 @@ public class ProviderActivity extends BaseActivity {
             searchCall.cancel();
         if(searchSnackbar!=null && searchSnackbar.isShown())
             searchSnackbar.dismiss();
-        searchSnackbar =  Snackbar.make(findViewById(R.id.base_parent),"Searching for \""+s+"\"",Snackbar.LENGTH_INDEFINITE)
-                .setAction("CANCEL", new View.OnClickListener() {
+        searchSnackbar =  Snackbar.make(findViewById(R.id.base_parent),getString(R.string.searching)+"\""+s+"\"",Snackbar.LENGTH_INDEFINITE)
+                .setAction(getString(R.string.cancel_search), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         searchSnackbar.dismiss();
@@ -149,11 +149,11 @@ public class ProviderActivity extends BaseActivity {
                 if(searchSnackbar.getView().getTag().toString().equalsIgnoreCase(s))
                     searchSnackbar.dismiss();
                 if(!response.isSuccess()){
-                    Toast.makeText(getApplicationContext(),"Can't search \""+s+"\"",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getString(R.string.search_cannot)+"\"" + s + "\"", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(response.body().isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Nothing matches \""+s+"\"",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getString(R.string.search_404)+"\""+s+"\"",Toast.LENGTH_SHORT).show();
                 }
                 searchList.put(s, response.body());
                 if(!list.getAdapter().equals(searchAdapter))

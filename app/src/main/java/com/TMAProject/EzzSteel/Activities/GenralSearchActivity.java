@@ -24,6 +24,7 @@ import com.TMAProject.EzzSteel.API.POJO.GET.PojoArrayWarper;
 import com.TMAProject.EzzSteel.Activities.Base.BaseActivity;
 import com.TMAProject.EzzSteel.Activities.Base.Parameters.BackButtonInfo;
 import com.TMAProject.EzzSteel.Activities.Base.Parameters.TitleInfo;
+import com.TMAProject.EzzSteel.Adapters.SideDrawerAdapter;
 import com.TMAProject.EzzSteel.R;
 import com.TMAProject.EzzSteel.Utils.Navigation;
 
@@ -35,7 +36,7 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+import static com.TMAProject.EzzSteel.Utils.LangHelper.*;
 public class GenralSearchActivity extends BaseActivity {
 
     boolean a=false,b=false;
@@ -116,9 +117,9 @@ public class GenralSearchActivity extends BaseActivity {
                 governateList = response.body();
                 ArrayList<String> spinnerList = new ArrayList<String>();
                 for (Governate g : response.body()) {
-                    spinnerList.add(g.getName_english());
+                    spinnerList.add(getName(g));
                 }
-                spinnerList.add(0, "Choose Governorate");
+                spinnerList.add(0, getString(R.string.spinner_gov));
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
                         R.layout.layout_spinner_item, R.id.spinnerText,
                         spinnerList);
@@ -143,8 +144,8 @@ public class GenralSearchActivity extends BaseActivity {
                 areaList = response.body().result;
                 ArrayList<String> spinnerList = new ArrayList<String>();
                 for (Area a : areaList)
-                    spinnerList.add(a.getName_english());
-                spinnerList.add(0, "Choose Area");
+                    spinnerList.add(getName(a));
+                spinnerList.add(0, getString(R.string.spinner_area));
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
                         R.layout.layout_spinner_item, R.id.spinnerText,
                         spinnerList);
@@ -167,8 +168,8 @@ public class GenralSearchActivity extends BaseActivity {
                 departmentList = response.body();
                 ArrayList<String> spinnerList = new ArrayList<String>();
                 for (Department d : response.body())
-                    spinnerList.add(d.getName_english());
-                spinnerList.add(0, "Choose Department");
+                    spinnerList.add(getName(d));
+                spinnerList.add(0, getString(R.string.spinner_dep));
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
                         R.layout.layout_spinner_item, R.id.spinnerText,
                         spinnerList);
@@ -189,7 +190,7 @@ public class GenralSearchActivity extends BaseActivity {
 
         parameters.put(BaseActivity.BACK_BUTTON,new BackButtonInfo(true,MainActivity.class));
         parameters.put(BaseActivity.TITLE,
-                new TitleInfo(true,"Search", ContextCompat.getColor(this, R.color.toolbar_color),18));
+                new TitleInfo(true, SideDrawerAdapter.SEARCH_OPTION, ContextCompat.getColor(this, R.color.toolbar_color),18));
         parameters.put(BaseActivity.CONTENT_RESORSES_ID, R.layout.activity_genral_search);
 
         return parameters;

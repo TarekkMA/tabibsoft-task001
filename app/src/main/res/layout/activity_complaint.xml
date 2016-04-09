@@ -40,7 +40,8 @@
                 android:id="@+id/complaint.name"
                 android:background="@null"
                 android:layout_marginLeft="12dp"
-                android:hint="Your Name ..."
+                android:layout_marginRight="12dp"
+                android:hint="@string/complaint_name_hint"
                 android:inputType="textPersonName"
                 android:maxLines="1" />
         </LinearLayout>
@@ -67,9 +68,10 @@
                 android:layout_height="match_parent"
                 android:id="@+id/complaint.number"
                 android:background="@null"
-                android:numeric="integer"
+                android:inputType="phone"
                 android:layout_marginLeft="12dp"
-                android:hint="Your Mobile Number ..."
+                android:layout_marginRight="12dp"
+                android:hint="@string/complaint_mobile_hint"
                 android:maxLines="1" />
         </LinearLayout>
 
@@ -95,7 +97,8 @@
                 android:id="@+id/complaint.msg"
                 android:background="@null"
                 android:layout_marginLeft="12dp"
-                android:hint="Your Comments ..."
+                android:layout_marginRight="12dp"
+                android:hint="@string/complaint_msg_hint"
                 android:gravity="start"
                 android:minHeight="150dp"
                 android:inputType="textMultiLine" />
@@ -103,7 +106,7 @@
 
         <Button
 
-            android:text="Send Message"
+            android:text="@string/complaint_send_btn"
             android:id="@+id/complaint.btn"
             android:background="@drawable/btn_orange"
             style="@style/ezz_button"/>

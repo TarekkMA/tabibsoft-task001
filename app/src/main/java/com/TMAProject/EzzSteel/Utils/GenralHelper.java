@@ -2,6 +2,10 @@ package com.TMAProject.EzzSteel.Utils;
 
 import com.TMAProject.EzzSteel.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by TarekkMA on 4/2/16.
  */
@@ -30,6 +34,14 @@ public class GenralHelper {
                 return ((prov) ? R.drawable.def_health_org : R.drawable.def_health_gray);
             default:
                 return ((prov) ? R.drawable.def_hos_org_old : R.drawable.def_hos_gray_old);
+        }
+    }
+
+    public static Object isJSONValid(String test) {
+        try {
+            return new JSONObject(test);
+        } catch (JSONException ex) {
+            return false;
         }
     }
 

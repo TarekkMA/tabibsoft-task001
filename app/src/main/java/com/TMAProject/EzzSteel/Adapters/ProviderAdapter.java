@@ -1,6 +1,7 @@
 package com.TMAProject.EzzSteel.Adapters;
 
 import android.content.Context;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.TMAProject.EzzSteel.API.POJO.GET.Provider;
 import com.TMAProject.EzzSteel.R;
 import com.TMAProject.EzzSteel.Utils.Navigation;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -45,10 +47,18 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.VH> {
     }
 
     @Override
-    public void onBindViewHolder(VH holder, final int position) {
-        if(iconResId>1)
-            Picasso.with(context).load(iconResId).into(holder.imageView);
-        else Picasso.with(context).load(R.drawable.def_hos_org_old).into(holder.imageView);
+    public void onBindViewHolder(final VH holder, final int position) {
+       Picasso.with(context).load(iconResId).into(holder.imageView, new Callback() {
+            @Override
+            public void onSuccess() {
+                holder.loadingProgressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
 
         holder.textView.setText(getName(providerList.get(position)));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -67,10 +77,12 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.VH> {
     class VH extends RecyclerView.ViewHolder{
         TextView textView;
         ImageView imageView;
+        ContentLoadingProgressBar loadingProgressBar;
         public VH(View itemView) {
             super(itemView);
             textView = (TextView)itemView.findViewById(R.id.prov_txt);
             imageView = (ImageView)itemView.findViewById(R.id.prov_ico_iv);
+            loadingProgressBar= (ContentLoadingProgressBar)itemView.findViewById(R.id.image_loading);
         }
     }
 }

@@ -4,5 +4,5 @@
     <drawable name="general_search_spinner_arrow">@drawable/spinner_arrow</drawable>
     <drawable name="complaint_text_bg">@drawable/bg01</drawable>
     <drawable name="complaint_big_text_bg">@drawable/bg02</drawable>
-
+    <drawable name="navigation_icon">@drawable/nav_ico</drawable>
 </resources>

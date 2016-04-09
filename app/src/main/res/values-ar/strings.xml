@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">تطبيق عز الطبي</string>
-    <string name="drawer_close"></string>
     <string name="complaint_activity_title">الشكاوي</string>
     <string name="err_empty_title">لا توجد بيانات</string>
     <string name="err_empty_msg">نحن نأسف لهذا \n- يمكنك إعادة المحاولة في وقت لاحق</string>
@@ -13,4 +12,36 @@
     <string name="searchbox_hint">إبحث في الفروع بالإسم ...</string>
     <string name="mapbtn">أظهر علي الخريطة</string>
     <string name="pdfbtn">إفتح ملف الـPDF</string>
+    <string name="complaints_option">الشكاوي</string>
+    <string name="home_option">الصفحة الرئيسية</string>
+    <string name="notifcation_option">الإشعارات</string>
+    <string name="search_option">البحث</string>
+    <string name="settings_option">الإعدادات</string>
+    <string name="complaint_2nd_title_text">هل لديك أي شكوي أو إقتراح ؟</string>
+    <string name="complaint_mobile_hint">رقم الموبايل ...</string>
+    <string name="complaint_msg_hint">ملاحظاتك وإقتراحتك ...</string>
+    <string name="complaint_name_hint">الإسم ...</string>
+    <string name="complaint_send_btn">إرسال</string>
+    <string name="cancel_search">إلغاء</string>
+    <string name="searching">جار البحث عن </string>
+    <string name="search_cannot">لم نتمكن من البحث عن </string>
+    <string name="search_404">لا توجد بيانات بالإسم </string>
+    <string name="complaint_msgerr">لا يجب أن يكون محتوي الشكوي فارغأ</string>
+    <string name="complaint_nameerr">لا يجب أن يكون الإسم فارغأ</string>
+    <string name="complaint_phoneerr">لا يجب أن يكون رقم الموبايل فارغأ</string>
+    <string name="complaint_err">شكواك لم تصل للسيرفر بنجاح :(</string>
+    <string name="complaint_succ">تم إرسال شكواك بنجاح :)</string>
+    <string name="spinner_gov">إختر محافظة</string>
+    <string name="spinner_area">إختر المنطقة</string>
+    <string name="spinner_dep">إختر القسم</string>
+    <string name="search_btn">بحث</string>
+    <string name="reset_btn">تفريغ</string>
+    <string name="save_btn">حفظ</string>
+    <string name="arabic_option">العربية</string>
+    <string name="english_option">الإنجليزية</string>
+    <string name="lang_change_msg">Please reopen the application to take an action</string>
+    <string name="lang_change_title">Langage has been changed to English</string>
+    <string name="lang_ok">ok</string>
+    <string name="tarekkma">من برمجة طارق محمد عبدالله</string>
+    <string name="loading">جار التحميل ...</string>
 </resources>

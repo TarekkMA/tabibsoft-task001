@@ -15,6 +15,7 @@ import com.TMAProject.EzzSteel.API.POJO.GET.ComplaintResult;
 import com.TMAProject.EzzSteel.Activities.Base.BaseActivity;
 import com.TMAProject.EzzSteel.Activities.Base.Parameters.BackButtonInfo;
 import com.TMAProject.EzzSteel.Activities.Base.Parameters.TitleInfo;
+import com.TMAProject.EzzSteel.Adapters.SideDrawerAdapter;
 import com.TMAProject.EzzSteel.R;
 
 import java.util.Hashtable;
@@ -42,11 +43,11 @@ public class ComplaintActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (name.getText().toString().isEmpty()){
-                    showSnackbar("Your name shouldn't be empty",Snackbar.LENGTH_SHORT);
+                    showSnackbar(getString(R.string.complaint_nameerr),Snackbar.LENGTH_SHORT);
                 }else if(phone.getText().toString().isEmpty()){
-                    showSnackbar("Your phone shouldn't be empty",Snackbar.LENGTH_SHORT);
+                    showSnackbar(getString(R.string.complaint_phoneerr),Snackbar.LENGTH_SHORT);
                 }else if(msg.getText().toString().isEmpty()){
-                    showSnackbar("Your complaint shouldn't be empty",Snackbar.LENGTH_SHORT);
+                    showSnackbar(getString(R.string.complaint_msgerr),Snackbar.LENGTH_SHORT);
                 }else {
                     sendDataToServer(name.getText().toString(),phone.getText().toString(),msg.getText().toString());
                 }
@@ -63,14 +64,14 @@ public class ComplaintActivity extends BaseActivity {
             public void onResponse(Call<ComplaintResult> call, Response<ComplaintResult> response) {
                 btn.setEnabled(true);
                 if(!response.isSuccess())
-                    showSnackbar("Your Complaint Didn't go to server :\\",Snackbar.LENGTH_LONG);
+                    showSnackbar(getString(R.string.complaint_err),Snackbar.LENGTH_LONG);
                 else if(response.body().getStatus().equalsIgnoreCase("Done successfully"))
-                    showSnackbar("Your Complaint Have Been Added Successfully",Snackbar.LENGTH_LONG);
+                    showSnackbar(getString(R.string.complaint_succ),Snackbar.LENGTH_LONG);
             }
             @Override
             public void onFailure(Call<ComplaintResult> call, Throwable t) {
                 btn.setEnabled(true);
-                showSnackbar("Your Complaint Didn't go to server :\\",Snackbar.LENGTH_LONG);
+                showSnackbar(getString(R.string.complaint_err),Snackbar.LENGTH_LONG);
             }
         });
     }
@@ -80,7 +81,7 @@ public class ComplaintActivity extends BaseActivity {
 
         parameters.put(BaseActivity.BACK_BUTTON,new BackButtonInfo(true,MainActivity.class));
         parameters.put(BaseActivity.TITLE,
-                new TitleInfo(true,this.getString(R.string.app_name), ContextCompat.getColor(this, R.color.toolbar_color),18));
+                new TitleInfo(true, SideDrawerAdapter.COMPLAINT_OPTION, ContextCompat.getColor(this, R.color.toolbar_color),18));
         parameters.put(BaseActivity.CONTENT_RESORSES_ID, R.layout.activity_complaint);
 
         return parameters;
