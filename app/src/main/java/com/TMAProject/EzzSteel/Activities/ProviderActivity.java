@@ -1,9 +1,12 @@
 package com.TMAProject.EzzSteel.Activities;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -60,7 +63,6 @@ public class ProviderActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        toggleLoading();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         id = getIntent().getStringExtra(PROVIDER_PARENT_ID);
         type = getIntent().getStringExtra(PROVIDER_PARENT_TYPE);
@@ -102,16 +104,17 @@ public class ProviderActivity extends BaseActivity {
     }
 
     void getDataFromServer(final Context context){
+        toggleLoading();
         Genrator.createService(EzzWS.class).getProviders(Arrays.getProvidersPOST(id)).enqueue(new Callback<PojoArrayWarper<Provider>>() {
             @Override
             public void onResponse(Call<PojoArrayWarper<Provider>> call, retrofit2.Response<PojoArrayWarper<Provider>> response) {
                 toggleLoading();
                 if (!response.isSuccess()) {
-                    DialogHelper.errorHappendDialog(context, true, getString(R.string.err_genaric_title), "response : " + response.code());
+                    showErrDialog();
                     return;
                 }
                 if (response.body().result.isEmpty()) {
-                    DialogHelper.errorHappendDialog(context, true, getString(R.string.err_empty_title), getString(R.string.err_empty_msg));
+                    showEemtyDialog();
                     return;
                 }
                 adapter.updateProviders(response.body().result);
@@ -120,13 +123,47 @@ public class ProviderActivity extends BaseActivity {
             @Override
             public void onFailure(Call<PojoArrayWarper<Provider>> call, Throwable t) {
                 toggleLoading();
-                DialogHelper.errorHappendDialog(context, true, getString(R.string.err_genaric_title), t.getMessage());
+                showErrDialog();
                 t.printStackTrace();
             }
         });
     }
 
+    void showErrDialog(){
+        final Context c = this;
+        new AlertDialog.Builder(c)
+                .setMessage(getString(R.string.errLoading))
+                .setCancelable(false)
+                .setPositiveButton(R.string.try_agin, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getDataFromServer(c);
+                    }
+                })
+                .setNegativeButton(R.string.err_exit, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ((Activity)c).finish();
+                    }
+                })
+                .show();
+    }
+    void showEemtyDialog(){
+        final Context c = this;
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.err_empty_msg))
+                .setCancelable(false)
+                .setPositiveButton(R.string.lang_ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ((Activity)c).finish();
+                    }
+                })
+                .show();
+    }
+
     void getSearchDataFromServer(final String s){
+        toggleLoading();
         if(searchCall!=null)
             searchCall.cancel();
         if(searchSnackbar!=null && searchSnackbar.isShown())

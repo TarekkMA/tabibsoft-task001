@@ -1,6 +1,8 @@
 package com.TMAProject.EzzSteel.Adapters;
 
 import android.content.Context;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.TMAProject.EzzSteel.API.POJO.GET.Department;
+import com.TMAProject.EzzSteel.Activities.MainActivity;
 import com.TMAProject.EzzSteel.R;
 import com.TMAProject.EzzSteel.Utils.LangHelper;
 import com.TMAProject.EzzSteel.Utils.Navigation;
@@ -31,6 +34,7 @@ public class SideDrawerAdapter extends RecyclerView.Adapter<SideDrawerAdapter.My
     public static String HOME_OPTION="Home" ;
     public static String SETTING_OPTION = "Setting";
     public static String NOTIFICATION_OPTION = "Notification";
+    public static String CONTACT_US_OPTION = "Contact us";
 
 
     private List<String> list = new ArrayList<>();
@@ -40,20 +44,26 @@ public class SideDrawerAdapter extends RecyclerView.Adapter<SideDrawerAdapter.My
 
     Context context;
 
-    public SideDrawerAdapter(Context context) {
+    DrawerLayout drawer;
+
+    public SideDrawerAdapter(Context context, DrawerLayout drawer) {
         LangHelper.renameNavOptions(context);
         items.add(HOME_OPTION);
         items.add(SEARCH_OPTION);
         items.add(COMPLAINT_OPTION);
         items.add(SETTING_OPTION);
         items.add(NOTIFICATION_OPTION);
+        items.add(CONTACT_US_OPTION);
         items.add(inserstIndex, loadingText);
         this.context=context;
+        this.drawer = drawer;
+        addDepartments();
     }
 
-    public void addDepartments(List<Department> sections) {
+    public void addDepartments() {
+        if(MainActivity.departments == null)return;
         items.remove(inserstIndex);
-        items.addAll(inserstIndex, sections);
+        items.addAll(inserstIndex, MainActivity.departments);
         notifyDataSetChanged();
     }
 
@@ -90,9 +100,11 @@ public class SideDrawerAdapter extends RecyclerView.Adapter<SideDrawerAdapter.My
     void onClickDepartment(int pos) {
         Department d = ((Department) items.get(pos));
         Navigation.handleDepartment(context,d);
+        drawer.closeDrawer(GravityCompat.START);
     }
     void onClickItem(int pos){
         Navigation.handleNavItem(context,(String) items.get(pos));
+        drawer.closeDrawer(GravityCompat.START);
     }
 
     @Override

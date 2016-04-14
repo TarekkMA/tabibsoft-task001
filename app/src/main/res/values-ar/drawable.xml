@@ -2,5 +2,6 @@
 <resources>
 
     <drawable name="navigation_icon">@drawable/nav_ico_ar</drawable>
+    <drawable name="header_logo">@drawable/ar_header_logo</drawable>
 
 </resources>

@@ -5,4 +5,5 @@
     <drawable name="complaint_text_bg">@drawable/bg01</drawable>
     <drawable name="complaint_big_text_bg">@drawable/bg02</drawable>
     <drawable name="navigation_icon">@drawable/nav_ico</drawable>
+    <drawable name="header_logo">@drawable/en_header_logo</drawable>
 </resources>

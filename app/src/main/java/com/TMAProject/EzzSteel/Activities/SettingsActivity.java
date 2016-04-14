@@ -22,6 +22,7 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class SettingsActivity extends BaseActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,4 +54,5 @@ public class SettingsActivity extends BaseActivity {
 
         return parameters;
     }
+
 }

@@ -9,10 +9,10 @@
     <color name="nav_item_bgr">#ff9e00</color>
     <color name="toolbar_color">#F14B00</color>
 
-    <color name="primary">#FD8B0F</color>
+    <color name="primary">#ff9d0c</color>
     <color name="primary_dark">#de7a0e</color>
     <color name="primary_light">#ff9c31</color>
-    <color name="accent">#F14B00</color>
+    <color name="accent">#f14b00</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
     <color name="icons">#212121</color>

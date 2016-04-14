@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by tarekkma on 2/21/16.
  */
 public class Genrator {
-    private static final String API_URL = "http://mobileapp.ezzmedicalcare.com/";
+    public static final String API_URL = "http://mobileapp.ezzmedicalcare.com/";
 
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 

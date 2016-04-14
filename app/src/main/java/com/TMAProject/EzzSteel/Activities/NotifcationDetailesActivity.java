@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.TMAProject.EzzSteel.Activities.Base.BaseActivity;
 import com.TMAProject.EzzSteel.Activities.Base.Parameters.BackButtonInfo;
 import com.TMAProject.EzzSteel.Activities.Base.Parameters.TitleInfo;
+import com.TMAProject.EzzSteel.Adapters.SideDrawerAdapter;
 import com.TMAProject.EzzSteel.R;
 
 import java.util.Hashtable;
@@ -32,7 +33,7 @@ public class NotifcationDetailesActivity extends BaseActivity {
 
         parameters.put(BaseActivity.BACK_BUTTON,new BackButtonInfo(true,MainActivity.class));
         parameters.put(BaseActivity.TITLE,
-                new TitleInfo(true,this.getString(R.string.app_name), ContextCompat.getColor(this, R.color.toolbar_color),18));
+                new TitleInfo(true, SideDrawerAdapter.NOTIFICATION_OPTION, ContextCompat.getColor(this, R.color.toolbar_color),18));
         parameters.put(BaseActivity.CONTENT_RESORSES_ID, R.layout.activity_notifcation_detailes);
 
         return parameters;

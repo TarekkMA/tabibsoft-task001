@@ -21,8 +21,8 @@
         <android.support.v4.widget.ContentLoadingProgressBar
             android:id="@+id/department_image_loading"
             style="?android:attr/progressBarStyle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_gravity="center"/>
     </FrameLayout>
     <TextView

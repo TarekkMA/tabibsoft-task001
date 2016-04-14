@@ -1,9 +1,12 @@
 package com.TMAProject.EzzSteel.Activities;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -58,7 +61,6 @@ public class BranchActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        toggleLoading();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         id = getIntent().getStringExtra(BranchActivity.BRANCH_PARENT_ID);
         searchTerms = getIntent().getStringExtra(SEARCH_TERMS);
@@ -101,16 +103,18 @@ public class BranchActivity extends BaseActivity {
     }
 
     void getDataFromServer(final Context context){
+        toggleLoading();
+
         Genrator.createService(EzzWS.class).getBranches(Arrays.getBranchesPOST(id)).enqueue(new Callback<List<Branche>>() {
             @Override
             public void onResponse(Call<List<Branche>> call, retrofit2.Response<List<Branche>> response) {
                 toggleLoading();
                 if (!response.isSuccess()) {
-                    DialogHelper.errorHappendDialog(context, true, getString(R.string.err_genaric_title), "response : " + response.code());
+showErrDialog();
                     return;
                 }
                 if (response.body().isEmpty()) {
-                    DialogHelper.errorHappendDialog(context, true, getString(R.string.err_empty_title), getString(R.string.err_empty_msg));
+                    showEemtyDialog();
                     return;
                 }
                 searchList.put("",response.body());
@@ -120,13 +124,14 @@ public class BranchActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<Branche>> call, Throwable t) {
                 toggleLoading();
-                DialogHelper.errorHappendDialog(context, true, getString(R.string.err_genaric_title), t.getMessage());
+                showErrDialog();
                 t.printStackTrace();
             }
         });
     }
 
     void getGenralSearchFromServer(final Context context){
+        toggleLoading();
         Log.d("Genral Search",searchTerms);
         String[] s = searchTerms.split("-");
         Genrator.createService(EzzWS.class).getGenralSearch(Arrays.getGeneralSearchPOST(s[0],s[1],s[2])).enqueue(new Callback<List<Branche>>() {
@@ -134,11 +139,11 @@ public class BranchActivity extends BaseActivity {
             public void onResponse(Call<List<Branche>> call, retrofit2.Response<List<Branche>> response) {
                 toggleLoading();
                 if (!response.isSuccess()) {
-                    DialogHelper.errorHappendDialog(context, true, getString(R.string.err_genaric_title), "response : " + response.code());
+                    showErrDialog();
                     return;
                 }
                 if (response.body().isEmpty()) {
-                    DialogHelper.errorHappendDialog(context, true, getString(R.string.err_empty_title), getString(R.string.err_empty_msg));
+                    showEemtyDialog();
                     return;
                 }
                 searchList.put("", response.body());
@@ -148,7 +153,7 @@ public class BranchActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<Branche>> call, Throwable t) {
                 toggleLoading();
-                DialogHelper.errorHappendDialog(context, true, getString(R.string.err_genaric_title), t.getMessage());
+                showErrDialog();
                 t.printStackTrace();
             }
         });
@@ -199,6 +204,43 @@ public class BranchActivity extends BaseActivity {
                 t.printStackTrace();
             }
         });
+    }
+
+
+    void showErrDialog(){
+        final Context c = this;
+        new AlertDialog.Builder(c)
+                .setMessage(getString(R.string.errLoading))
+                .setCancelable(false)
+                .setPositiveButton(R.string.try_agin, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(searchTerms==null)
+                            getDataFromServer(c);
+                        else
+                            getGenralSearchFromServer(c);
+                    }
+                })
+                .setNegativeButton(R.string.err_exit, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ((Activity)c).finish();
+                    }
+                })
+                .show();
+    }
+    void showEemtyDialog(){
+        final Context c = this;
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.err_empty_msg))
+                .setCancelable(false)
+                .setPositiveButton(R.string.lang_ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ((Activity)c).finish();
+                    }
+                })
+                .show();
     }
 
     void applySearch(String s){

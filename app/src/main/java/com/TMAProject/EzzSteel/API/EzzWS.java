@@ -3,6 +3,7 @@ package com.TMAProject.EzzSteel.API;
 import com.TMAProject.EzzSteel.API.POJO.GET.Area;
 import com.TMAProject.EzzSteel.API.POJO.GET.Branche;
 import com.TMAProject.EzzSteel.API.POJO.GET.ComplaintResult;
+import com.TMAProject.EzzSteel.API.POJO.GET.Contact;
 import com.TMAProject.EzzSteel.API.POJO.GET.Department;
 import com.TMAProject.EzzSteel.API.POJO.GET.Governate;
 import com.TMAProject.EzzSteel.API.POJO.GET.InfoPdf;
@@ -54,7 +55,8 @@ public interface EzzWS {
     Call<List<Branche>> getBranchDetailes(@Body List<BranchDetailesPOST> sentData);
     @GET("providers/notifications")
     Call<List<Notification>> getNotifcations();
-
+    @GET("providers/contacts")
+    Call<List<Contact>> getContact();
 
 
 }

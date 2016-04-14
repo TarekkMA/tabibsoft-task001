@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ezz Medical Application</string>
+    <string name="app_name">Ezzsteel Med</string>
     <string name="drawer_open" translatable="false">Menu opened</string>
     <string name="drawer_close" translatable="false">Menu closed</string>
     <string name="title_activity_genral_search">General Search</string>
@@ -10,21 +10,19 @@
     <string name="err_id_depart_title">Something strange happened</string>
     <string name="err_id_depart_msg">No reference on the department you chose</string>
 
-    <string name="err_empty_title">No data found</string>
-    <string name="err_empty_msg">We are sorry for that
-- you can try again later</string>
+    <string name="err_empty_title">No branchs is this provider</string>
     <string name="err_genaric_title">Something went wrong</string>
-    <string name="searchbox_hint">Search branches by name ...</string>
-    <string name="mapbtn">Show in map</string>
+    <string name="searchbox_hint">Search branches by name …</string>
+    <string name="mapbtn">Show on map</string>
     <string name="pdfbtn">Open PDF File</string>
     <string name="search_option">Search</string>
-    <string name="home_option">Home</string>
+    <string name="home_option">Home Page</string>
     <string name="complaints_option">Complaint</string>
     <string name="settings_option">Settings</string>
     <string name="notifcation_option">Notifcations</string>
-    <string name="complaint_name_hint">Your Name ...</string>
-    <string name="complaint_mobile_hint">Your Mobile Number ...</string>
-    <string name="complaint_msg_hint">Your Comments ...</string>
+    <string name="complaint_name_hint">Your Name …</string>
+    <string name="complaint_mobile_hint">Your Mobile Number …</string>
+    <string name="complaint_msg_hint">Your Comments …</string>
     <string name="complaint_send_btn">Send Message</string>
     <string name="cancel_search">CANCEL</string>
     <string name="searching">Searching for</string>
@@ -48,5 +46,16 @@
     <string name="lang_ok">ok</string>
     <string name="tarekkma">Programmed By Tarek Mohamed Abdalla</string>
     <string name="loading">Loading ...</string>
+    <string name="map_empty_cords">Branch location not avilabile</string>
+    <string name="genral_serach_less">Select Governate Or Department</string>
+    <string name="settings_2nd_title">Application Language</string>
+    <string name="errLoading">Error happend\nTry agin later</string>
+    <string name="try_agin">Retry Now</string>
+    <string name="err_exit">Back</string>
+    <string name="err_empty_msg">There is no data in this section\nTry agin later</string>
+    <string name="call_dialog">Call ...</string>
+    <string name="subtitle">Ezz Medical Application</string>
+    <string name="contactus_option">Contact us</string>
+    <string name="contact_title">Ezzsteel contact info\nMedical sector</string>
 
 </resources>

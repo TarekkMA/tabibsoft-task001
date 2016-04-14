@@ -36,7 +36,7 @@ public class DialogHelper {
         new AlertDialog.Builder(context)
                 .setTitle(title)
                 .setMessage(msg)
-                .setPositiveButton(R.string.lang_ok, new DialogInterface.OnClickListener() {
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -54,7 +54,6 @@ public class DialogHelper {
                         if (exit) ((Activity) context).finish();
                     }
                 })
-                .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
     }
 }

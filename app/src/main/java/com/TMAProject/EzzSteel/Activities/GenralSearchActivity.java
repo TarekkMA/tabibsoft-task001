@@ -68,7 +68,7 @@ public class GenralSearchActivity extends BaseActivity {
                 if (governateList == null || governateList.isEmpty()) return;
                 if (position == 0) {
                     if (areaList != null && !areaList.isEmpty()) {
-                        city.setAdapter(null);
+                       fillAreaEmpty();
                     }
                 }else {
                     toggleLoading();
@@ -96,15 +96,22 @@ public class GenralSearchActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if(gov.getSelectedItemPosition()==0 && department.getSelectedItemPosition()==0){
-                    Snackbar.make(parentLayout,"You Must Select One Governate Or Department",Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(parentLayout,getString(R.string.genral_serach_less),Snackbar.LENGTH_LONG).show();
                 }else{
                     Navigation.handleGenralSearch(context,
                             department.getSelectedItemPosition()+"-"+gov.getSelectedItemPosition()+"-"+city.getSelectedItemPosition());
                 }
             }
         });
+        fillAreaEmpty();
         getGovFromServer();
         getDepartmentsFromServer();
+    }
+
+    void fillAreaEmpty(){
+        city.setAdapter(new ArrayAdapter<String>(context,
+                R.layout.layout_spinner_item, R.id.spinnerText,
+                new String[]{getString(R.string.spinner_area)}));
     }
 
     void getGovFromServer(){

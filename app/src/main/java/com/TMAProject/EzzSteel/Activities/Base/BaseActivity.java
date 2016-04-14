@@ -3,6 +3,7 @@ package com.TMAProject.EzzSteel.Activities.Base;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -37,6 +38,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    public static final String TITLE_KEY = "TITLE_KEY";
+
     public static final int TEMPLATE = -1;
     public static final int CONTENT_RESORSES_ID = 0;
     public static final int NAVGATION_DRAWER = 1;
@@ -55,6 +58,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public static String lang = null;
 
+    public DrawerLayout drawer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         adjustLanguage();
@@ -69,7 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if(parameters.get(CONTENT_RESORSES_ID)!=null)
             inflateContent();
 
-        if(parameters.get(NAVGATION_DRAWER)!=null && ((NavInfo) parameters.get(NAVGATION_DRAWER)).exists)
+       // if(parameters.get(NAVGATION_DRAWER)!=null && ((NavInfo) parameters.get(NAVGATION_DRAWER)).exists)
             navExists=true;
 
         if(parameters.get(TITLE)!=null && ((TitleInfo) parameters.get(TITLE)).custom)
@@ -77,11 +83,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         else
             setupTheTitle(new TitleInfo(false));
 
-        if(parameters.get(BACK_BUTTON)!=null && ((BackButtonInfo) parameters.get(BACK_BUTTON)).exists){
+        /*if(parameters.get(BACK_BUTTON)!=null && ((BackButtonInfo) parameters.get(BACK_BUTTON)).exists){
             if(getSupportActionBar()==null)return;
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
+        }*/
 
     }
 
@@ -103,8 +109,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
+        if (this.drawer.isDrawerOpen(GravityCompat.START)) {
+            this.drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     private void adjustLanguage(){
@@ -129,17 +138,21 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    private void checkTemplate(){
-
-    }
 
     private void setupTheTitle(TitleInfo i){
         Toolbar toolbar=(Toolbar)findViewById(R.id.base_toolbar);
         TextView customTextView = ((TextView) findViewById(R.id.base_toolbar_title));
-        if(i.custom){
+
+        String stringFromIntent = getIntent().getStringExtra(TITLE_KEY);
+        customTextView.setTextColor(i.colorRes);
+        customTextView.setTextSize(i.size);
+        if(stringFromIntent==null || stringFromIntent.isEmpty()){
             customTextView.setText(i.title);
-            customTextView.setTextColor(i.colorRes);
-            customTextView.setTextSize(i.size);
+        }else{
+            customTextView.setText(stringFromIntent);
+        }
+        if(i.custom){
+
         }
 
         setSupportActionBar(toolbar);
@@ -149,7 +162,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void setupTheNav(Toolbar toolbar){
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.base_drawer);
+         drawer = (DrawerLayout) findViewById(R.id.base_drawer);
         if(!navExists) {
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             return;
@@ -160,7 +173,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         RecyclerView navList = (RecyclerView) findViewById(R.id.base_drawer_recyclerView);
         navList.setHasFixedSize(true);
         navList.setLayoutManager(new LinearLayoutManager(this));
-        navAdapter = new SideDrawerAdapter(this);
+        navAdapter = new SideDrawerAdapter(this,drawer);
         navList.setAdapter(navAdapter);
 
 
@@ -186,9 +199,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    public void changeTitle(String s){
+        TextView customTextView = ((TextView) findViewById(R.id.base_toolbar_title));
+        customTextView.setText(s);
+    }
 
     public void fillNavWithDepartments(List<Department> departments){
-        navAdapter.addDepartments(departments);
+        navAdapter.addDepartments();
     }
 
     public void toggleLoading(){
@@ -199,10 +216,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract Map<Integer,Object> getParameters();
-
-
-
-
-
 
 }

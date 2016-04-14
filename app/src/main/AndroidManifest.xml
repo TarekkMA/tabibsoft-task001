@@ -23,7 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.MainActivity" />
-        <activity android:name=".Activities.SplashActivity">
+        <activity
+            android:name=".Activities.SplashActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -74,7 +76,8 @@
             android:name="com.parse.push.gcm_sender_id"
             android:value="id:23683710387" />
         ;
-        <activity android:name=".Activities.NotifcationDetailesActivity"></activity>
+        <activity android:name=".Activities.NotifcationDetailesActivity" />
+        <activity android:name=".Activities.WebviewActivity"></activity>
     </application>
 
 </manifest>

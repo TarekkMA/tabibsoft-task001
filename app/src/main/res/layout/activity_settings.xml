@@ -12,7 +12,7 @@
         android:orientation="vertical">
         <TextView
             style="@style/_2nd_title_txt"
-            android:text="@string/general_search_2nd_title_text"
+            android:text="@string/settings_2nd_title"
             />
 
         <LinearLayout

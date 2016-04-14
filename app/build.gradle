@@ -8,15 +8,10 @@ android {
         applicationId "com.TMAProject.EzzSteel"
         minSdkVersion 17
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.0.2"
     }
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+
 }
 
 dependencies {
@@ -28,6 +23,8 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
+
+    compile 'com.google.guava:guava:19.0'
 
 
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'

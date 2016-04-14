@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        Picasso.with(this).load(R.drawable.splash_img_1).fit()
+        Picasso.with(this).load(R.drawable.ar_splash).fit()
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .into(((ImageView) findViewById(R.id.splash_img)));
         new Handler().postDelayed(new Runnable() {

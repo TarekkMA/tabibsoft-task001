@@ -37,6 +37,24 @@ public class GenralHelper {
         }
     }
 
+
+    public static int getTempByParentName(String name){
+        if(name==null)name="";
+        switch (name){
+            case "Hospitals":
+                return R.drawable.temp_hos;
+            case "Laboratories":
+                return R.drawable.temp_lab;
+            case "Pharmacies":
+                return R.drawable.temp_pharm;
+            case "Radiology Centers":
+                return R.drawable.temp_rai;
+            default:
+                return R.drawable.temp_hos;
+        }
+    }
+
+
     public static Object isJSONValid(String test) {
         try {
             return new JSONObject(test);

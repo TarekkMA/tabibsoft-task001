@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.TMAProject.EzzSteel.Activities.SplashActivity">
-    <ImageView
+    android:padding="4dp"
+    android:background="#000"
+    tools:context="com.TMAProject.EzzSteel.Activities.WebviewActivity">
+    <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/splash_img"
-        android:src="@null"
-        android:scaleType="centerCrop"/>
-
+        android:layout_height="match_parent"/>
 </RelativeLayout>

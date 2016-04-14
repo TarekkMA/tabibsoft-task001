@@ -15,5 +15,5 @@
         android:id="@+id/notifcation_text"
         android:padding="16dp"
         android:textColor="#000"
-        android:textSize="23sp" />
+        android:textSize="18sp" />
 </RelativeLayout>

@@ -1,8 +1,11 @@
 package com.TMAProject.EzzSteel.Activities;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -16,6 +19,7 @@ import com.TMAProject.EzzSteel.Activities.Base.Parameters.TitleInfo;
 import com.TMAProject.EzzSteel.Adapters.MainListAdapter;
 import com.TMAProject.EzzSteel.R;
 import com.TMAProject.EzzSteel.Utils.DialogHelper;
+import com.google.common.collect.Lists;
 
 import java.util.Hashtable;
 import java.util.List;
@@ -56,22 +60,55 @@ public class SubDerpartmentActivity extends BaseActivity {
             public void onResponse(Call<List<Department>> call, retrofit2.Response<List<Department>> response) {
                 toggleLoading();
                 if (!response.isSuccess()) {
-                    DialogHelper.errorHappendDialog(context, true, getString(R.string.err_genaric_title), "response : " + response.code());
+                    showErrDialog();
                     return;
                 }
                 if(response.body().isEmpty()){
-                    DialogHelper.errorHappendDialog(context, true, getString(R.string.err_empty_title), getString(R.string.err_empty_msg));
+                    showEemtyDialog();
                     return;
                 }
-                adapter.update(response.body());
+                adapter.update(Lists.reverse(response.body()));
             }
 
             @Override
             public void onFailure(Call<List<Department>> call, Throwable t) {
                 toggleLoading();
-                DialogHelper.errorHappendDialog(context, true, getString(R.string.err_genaric_title), t.getMessage());
+                showErrDialog();
                 t.printStackTrace();            }
         });
+    }
+
+    void showErrDialog(){
+        final Context c = this;
+        new AlertDialog.Builder(c)
+                .setMessage(getString(R.string.errLoading))
+                .setCancelable(false)
+                .setPositiveButton(R.string.try_agin, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getDataFromServer(c);
+                    }
+                })
+                .setNegativeButton(R.string.err_exit, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ((Activity)c).finish();
+                    }
+                })
+                .show();
+    }
+    void showEemtyDialog(){
+        final Context c = this;
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.err_empty_msg))
+                .setCancelable(false)
+                .setPositiveButton(R.string.lang_ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ((Activity)c).finish();
+                    }
+                })
+                .show();
     }
 
     @Override

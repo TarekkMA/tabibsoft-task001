@@ -5,6 +5,7 @@ import android.preference.PreferenceManager;
 
 import com.TMAProject.EzzSteel.API.POJO.GET.Area;
 import com.TMAProject.EzzSteel.API.POJO.GET.Branche;
+import com.TMAProject.EzzSteel.API.POJO.GET.Contact;
 import com.TMAProject.EzzSteel.API.POJO.GET.Department;
 import com.TMAProject.EzzSteel.API.POJO.GET.Governate;
 import com.TMAProject.EzzSteel.API.POJO.GET.InfoPdf;
@@ -86,6 +87,7 @@ public class LangHelper {
         SideDrawerAdapter.NOTIFICATION_OPTION=c.getString(R.string.notifcation_option);
         SideDrawerAdapter.SETTING_OPTION=c.getString(R.string.settings_option);
         SideDrawerAdapter.COMPLAINT_OPTION=c.getString(R.string.complaints_option);
+        SideDrawerAdapter.CONTACT_US_OPTION=c.getString(R.string.contactus_option);
     }
     public static void changeLanguage(String code,Context context){
        // BaseActivity.lang = code.toLowerCase();
@@ -102,6 +104,20 @@ public class LangHelper {
         switch (BaseActivity.lang){
             case "ar":return j.optString("ar");
             case "en":return j.optString("en");
+            default:return "NULL";
+        }
+    }
+    public static String getContentFromContact(Contact c){
+        switch (BaseActivity.lang){
+            case "ar":return c.getContent_ar();
+            case "en":return c.getContent_en();
+            default:return "NULL";
+        }
+    }
+    public static String getAddressFromContact(Contact c){
+        switch (BaseActivity.lang){
+            case "ar":return c.getAddress_arabic();
+            case "en":return c.getAddress_english();
             default:return "NULL";
         }
     }

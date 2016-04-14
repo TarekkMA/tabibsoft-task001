@@ -36,42 +36,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-            android:paddingBottom="1dp">
+            android:paddingBottom="1dp"
+            android:weightSum="1">
 
-            <FrameLayout
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:background="#9a9792"
-                android:minHeight="65dp"
-                android:padding="12dp"
-                >
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:padding="4dp"
-                    android:id="@+id/branch.icon"
-                    android:src="@drawable/hospital_white"
-                    android:layout_gravity="center" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:minHeight="65dp"
-                android:layout_width="match_parent"
+            <TextView
                 android:layout_height="wrap_content"
+                android:padding="8dp"
                 android:layout_weight="1"
-                android:layout_marginStart="1dp"
-                android:background="#bab5b1"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:id="@+id/branch.name"
-                    android:layout_gravity="center"
-                    android:textColor="#fff" />
-            </FrameLayout>
+                android:layout_span="2"
+                android:text="@string/contact_title"
+                style="@style/_2nd_title_txt"
+                android:layout_marginBottom="0dp"/>
         </TableRow>
 
         <TableRow

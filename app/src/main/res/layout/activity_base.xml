@@ -29,18 +29,45 @@
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/base.toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
+                    android:layout_height="wrap_content"
+                    android:minHeight="?attr/actionBarSize"
                     android:background="?attr/colorPrimary"
+                    android:gravity="center"
                     app:popupTheme="@style/AppTheme.PopupOverlay">
 
-                    <TextView
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
                         android:text="@string/app_name"
+                        android:gravity="start"
                         style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                         android:textAppearance="@style/TextAppearance.BoldFont"
-                        android:layout_gravity="center"
                         android:id="@+id/base.toolbar.title" />
+                        <ImageView
+                            android:layout_marginEnd="4dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/header_logo"
+                            android:layout_gravity="center"
+                            android:id="@+id/heartlogo"
+                            android:layout_alignParentEnd="true" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/subtitle"
+                            style="@style/BoldFont"
+                            android:layout_below="@id/heartlogo"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="@color/accent"
+                            android:textSize="10sp" />
+
+                    </RelativeLayout>
 
                 </android.support.v7.widget.Toolbar>
 
@@ -88,7 +115,7 @@
             android:adjustViewBounds="true" />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/base_drawer_recyclerView"
-            android:layout_width="220dp"
+            android:layout_width="235dp"
             android:layout_height="match_parent"
             android:background="@color/primary_light"
             android:scrollbars="vertical"

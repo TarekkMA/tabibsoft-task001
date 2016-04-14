@@ -1,8 +1,11 @@
 package com.TMAProject.EzzSteel.Activities;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,7 +40,6 @@ public class NotificationActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        toggleLoading();
         dataFromPush = getIntent().getStringExtra("com.parse.Data");
         final RecyclerView list = (RecyclerView)findViewById(R.id.list);
         list.setLayoutManager(new LinearLayoutManager(this));
@@ -49,16 +51,17 @@ public class NotificationActivity extends BaseActivity {
     }
 
     void  getDataFromServer(final Context c){
+        toggleLoading();
         Genrator.createService(EzzWS.class).getNotifcations().enqueue(new Callback<List<Notification>>() {
             @Override
             public void onResponse(Call<List<Notification>> call, retrofit2.Response<List<Notification>> response) {
                 toggleLoading();
                 if (!response.isSuccess()) {
-                    DialogHelper.errorHappendDialog(c, true, getString(R.string.err_genaric_title), "response : " + response.code());
+                    showErrDialog();
                     return;
                 }
                 if (response.body().isEmpty()) {
-                    DialogHelper.errorHappendDialog(c, true, getString(R.string.err_empty_title), getString(R.string.err_empty_msg));
+                    showEemtyDialog();
                     return;
                 }
                 adapter.updateList(response.body());
@@ -67,12 +70,43 @@ public class NotificationActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<Notification>> call, Throwable t) {
                 toggleLoading();
-                DialogHelper.errorHappendDialog(c, true, getString(R.string.err_genaric_title), t.getMessage());
+                showErrDialog();
                 t.printStackTrace();
             }
         });
     }
-
+    void showErrDialog(){
+        final Context c = this;
+        new AlertDialog.Builder(c)
+                .setMessage(getString(R.string.errLoading))
+                .setCancelable(false)
+                .setPositiveButton(R.string.try_agin, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getDataFromServer(c);
+                    }
+                })
+                .setNegativeButton(R.string.err_exit, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ((Activity)c).finish();
+                    }
+                })
+                .show();
+    }
+    void showEemtyDialog(){
+        final Context c = this;
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.err_empty_msg))
+                .setCancelable(false)
+                .setPositiveButton(R.string.lang_ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ((Activity)c).finish();
+                    }
+                })
+                .show();
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -92,7 +126,7 @@ public class NotificationActivity extends BaseActivity {
 
         parameters.put(BaseActivity.BACK_BUTTON,new BackButtonInfo(true,MainActivity.class));
         parameters.put(BaseActivity.TITLE,
-                new TitleInfo(true, SideDrawerAdapter.SEARCH_OPTION, ContextCompat.getColor(this, R.color.toolbar_color),18));
+                new TitleInfo(true, SideDrawerAdapter.NOTIFICATION_OPTION, ContextCompat.getColor(this, R.color.toolbar_color),18));
         parameters.put(BaseActivity.CONTENT_RESORSES_ID, R.layout.activity_notifcation);
 
         return parameters;

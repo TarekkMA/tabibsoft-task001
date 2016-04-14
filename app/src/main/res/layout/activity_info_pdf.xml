@@ -33,5 +33,5 @@
         style="@style/ezz_button"
         android:id="@+id/pdf.button"
         android:background="@drawable/btn_orange"
-        android:text="Open PDF file"/>
+        android:text="@string/pdfbtn"/>
 </LinearLayout>
