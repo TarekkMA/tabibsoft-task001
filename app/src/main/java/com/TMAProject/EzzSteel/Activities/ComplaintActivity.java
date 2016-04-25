@@ -49,6 +49,7 @@ public class ComplaintActivity extends BaseActivity {
                 }else if(msg.getText().toString().isEmpty()){
                     showSnackbar(getString(R.string.complaint_msgerr),Snackbar.LENGTH_SHORT);
                 }else {
+                    toggleLoading();
                     sendDataToServer(name.getText().toString(),phone.getText().toString(),msg.getText().toString());
                 }
             }
@@ -57,19 +58,26 @@ public class ComplaintActivity extends BaseActivity {
     void showSnackbar(String s,int duration){
         Snackbar.make(parentLayout,s,Snackbar.LENGTH_SHORT).show();
     }
-    void sendDataToServer(String name,String phone,String msg){
+    void sendDataToServer(String nametxt,String phonetxt,String msgtxt){
         btn.setEnabled(false);
-        Genrator.createService(EzzWS.class).addComplaint(Arrays.getComplainPOST(name,phone,msg)).enqueue(new Callback<ComplaintResult>() {
+        Genrator.createService(EzzWS.class).addComplaint(Arrays.getComplainPOST(nametxt,phonetxt,msgtxt)).enqueue(new Callback<ComplaintResult>() {
             @Override
             public void onResponse(Call<ComplaintResult> call, Response<ComplaintResult> response) {
                 btn.setEnabled(true);
+                toggleLoading();
                 if(!response.isSuccess())
                     showSnackbar(getString(R.string.complaint_err),Snackbar.LENGTH_LONG);
-                else if(response.body().getStatus().equalsIgnoreCase("Done successfully"))
-                    showSnackbar(getString(R.string.complaint_succ),Snackbar.LENGTH_LONG);
+                else if(response.body().getStatus().equalsIgnoreCase("Done successfully")) {
+                    name.setText("");
+                    phone.setText("");
+                    msg.setText("");
+                    showSnackbar(getString(R.string.complaint_succ), Snackbar.LENGTH_LONG);
+                }
             }
             @Override
             public void onFailure(Call<ComplaintResult> call, Throwable t) {
+                toggleLoading();
+                t.printStackTrace();
                 btn.setEnabled(true);
                 showSnackbar(getString(R.string.complaint_err),Snackbar.LENGTH_LONG);
             }

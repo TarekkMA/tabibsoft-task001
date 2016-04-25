@@ -33,6 +33,7 @@ import retrofit2.http.POST;
 public interface EzzWS {
     @GET("providers/departments")
     Call<List<Department>> getDepartments();
+
     @POST("providers/subdepartments")
     Call<List<Department>> getSubDepartments(@Body List<subDepartmentPOST> sentData);
     @POST("providers/providers")
@@ -57,6 +58,4 @@ public interface EzzWS {
     Call<List<Notification>> getNotifcations();
     @GET("providers/contacts")
     Call<List<Contact>> getContact();
-
-
 }

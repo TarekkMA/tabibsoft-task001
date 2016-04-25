@@ -27,27 +27,17 @@
             android:layout_gravity="center"/>
     </FrameLayout>
 
+    <TextView
+        android:layout_height="0dp"
+        android:padding="8dp"
+        android:layout_weight="1"
+        android:text="@string/contact_title"
+        style="@style/_2nd_title_txt"
+        android:layout_marginBottom="0dp"/>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:paddingBottom="1dp"
-            android:weightSum="1">
-
-            <TextView
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:layout_weight="1"
-                android:layout_span="2"
-                android:text="@string/contact_title"
-                style="@style/_2nd_title_txt"
-                android:layout_marginBottom="0dp"/>
-        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
@@ -120,11 +110,10 @@
                 android:padding="8dp" >
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/branch.email"
-                    android:layout_gravity="center"
                     android:gravity="start"
                     android:padding="4dp"
                     android:textColor="#000" />
@@ -161,11 +150,10 @@
                 android:padding="8dp" >
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/branch.numbers"
-                    android:layout_gravity="center"
                     style="@style/BoldFont"
                     android:gravity="start"
                     android:textColor="#304587"

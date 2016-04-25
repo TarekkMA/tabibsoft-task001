@@ -37,8 +37,11 @@ public class SettingsActivity extends BaseActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean ar = (s.getSelectedItemPosition()==0);
+                if(LangHelper.getLangage(c).equalsIgnoreCase("ar") == ar)
+                    return;
                 DialogHelper.infoHappendDialog(c,false,getString(R.string.lang_change_title),getString(R.string.lang_change_msg));
-                LangHelper.changeLanguage((s.getSelectedItemPosition()==0)?"ar":"en",c);
+                LangHelper.changeLanguage(ar?"ar":"en",c);
             }
         });
     }

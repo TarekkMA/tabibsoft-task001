@@ -3,6 +3,8 @@ package com.TMAProject.EzzSteel.Activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.TMAProject.EzzSteel.R;
+
 public class WebviewActivity extends AppCompatActivity {
 
     @Override

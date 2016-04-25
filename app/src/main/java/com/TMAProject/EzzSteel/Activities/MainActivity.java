@@ -54,6 +54,10 @@ public class MainActivity extends BaseActivity {
 
     void getDataFromServer(){
         toggleLoading();
+
+
+
+
         Genrator.createService(EzzWS.class).getDepartments().enqueue(new Callback<List<Department>>() {
             @Override
             public void onResponse(Call<List<Department>> call, retrofit2.Response<List<Department>> response) {

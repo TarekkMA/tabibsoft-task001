@@ -98,8 +98,10 @@ public class GenralSearchActivity extends BaseActivity {
                 if(gov.getSelectedItemPosition()==0 && department.getSelectedItemPosition()==0){
                     Snackbar.make(parentLayout,getString(R.string.genral_serach_less),Snackbar.LENGTH_LONG).show();
                 }else{
-                    Navigation.handleGenralSearch(context,
-                            department.getSelectedItemPosition()+"-"+gov.getSelectedItemPosition()+"-"+city.getSelectedItemPosition());
+                    String gov_id = (gov.getSelectedItemPosition()==0)?"0":governateList.get(gov.getSelectedItemPosition()-1).getId();
+                    String area_id = (city.getSelectedItemPosition()==0)?"0":areaList.get(city.getSelectedItemPosition()-1).getId();
+                    String dep_id = (department.getSelectedItemPosition()==0)?"0":departmentList.get(department.getSelectedItemPosition()-1).getId();
+                    Navigation.handleGenralSearch(context, dep_id+"-"+gov_id+"-"+area_id);
                 }
             }
         });
@@ -167,20 +169,18 @@ public class GenralSearchActivity extends BaseActivity {
     }
 
     void getDepartmentsFromServer(){
+        if(!MainActivity.departments.isEmpty()){
+            b=true;
+            if(a==b)toggleLoading();
+            fillDepartment(MainActivity.departments);
+            return;
+        }
         Genrator.createService(EzzWS.class).getDepartments().enqueue(new Callback<List<Department>>() {
             @Override
             public void onResponse(Call<List<Department>> call, Response<List<Department>> response) {
                 b=true;
                 if(a==b)toggleLoading();
-                departmentList = response.body();
-                ArrayList<String> spinnerList = new ArrayList<String>();
-                for (Department d : response.body())
-                    spinnerList.add(getName(d));
-                spinnerList.add(0, getString(R.string.spinner_dep));
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
-                        R.layout.layout_spinner_item, R.id.spinnerText,
-                        spinnerList);
-                department.setAdapter(adapter);
+                fillDepartment(response.body());
             }
 
             @Override
@@ -189,6 +189,21 @@ public class GenralSearchActivity extends BaseActivity {
                 if(a==b)toggleLoading();
             }
         });
+    }
+
+    void fillDepartment(List<Department> dd){
+        departmentList = dd;
+        ArrayList<String> spinnerList = new ArrayList<String>();
+        for (Department d : departmentList) {
+            if(Integer.parseInt(d.getChild())==0 && d.getType().equalsIgnoreCase("provider")){
+                spinnerList.add(getName(d));
+            }
+        }
+        spinnerList.add(0, getString(R.string.spinner_dep));
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
+                R.layout.layout_spinner_item, R.id.spinnerText,
+                spinnerList);
+        department.setAdapter(adapter);
     }
 
     @Override

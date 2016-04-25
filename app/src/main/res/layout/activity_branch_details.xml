@@ -109,7 +109,6 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/branch.address"
                     android:layout_gravity="start"
-                    android:gravity="start"
                     android:padding="4dp"
                     android:textColor="#000" />
             </FrameLayout>
@@ -145,12 +144,10 @@
                 android:padding="8dp" >
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/branch.email"
-                    android:layout_gravity="center"
-                    android:gravity="start"
                     android:padding="4dp"
                     android:textColor="#000" />
             </FrameLayout>
@@ -186,13 +183,11 @@
                 android:padding="8dp" >
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/branch.numbers"
-                    android:layout_gravity="center"
                     style="@style/BoldFont"
-                    android:gravity="start"
                     android:textColor="#304587"
                     android:padding="4dp" />
             </FrameLayout>

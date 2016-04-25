@@ -61,7 +61,7 @@ public class SideDrawerAdapter extends RecyclerView.Adapter<SideDrawerAdapter.My
     }
 
     public void addDepartments() {
-        if(MainActivity.departments == null)return;
+        if(MainActivity.departments.isEmpty())return;
         items.remove(inserstIndex);
         items.addAll(inserstIndex, MainActivity.departments);
         notifyDataSetChanged();
